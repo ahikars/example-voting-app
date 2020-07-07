@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.db.type }}
+  name: {{ .Values.db.type }}
+  namespace: {{ template "name" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.db.type }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.db.type }}
+    spec:
+      containers:
+      - image: {{ .Values.db.name }}{{ .Values.db.containers.image }}
+        name: {{ .Values.db.name }}
+        env:
+        - name: {{ .Values.db.name }}_UESR
+          value: {{ .Values.db.name }}
+        - name: {{ .Values.db.name }}_PASSWORD
+          value: {{ .Values.db.name }}
+        ports:
+        - containerPort: {{ .Values.db.ports.containerPort }}
+          name: {{ .Values.db.name }}
+        volumeMounts:
+        - mountPath: {{ .Values.db.volumeMounts.mountPath }}
+          name: {{ .Values.db.name }}-data
+      volumes:
+      - name: {{ .Values.db.name }}-data
+        emptyDir: {} 

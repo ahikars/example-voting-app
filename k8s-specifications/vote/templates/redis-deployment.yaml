@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.dbcache.name }}
+  name: {{ .Values.dbcache.name }}
+  namespace: {{ template "name" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.dbcache.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.dbcache.name }}
+    spec:
+      containers:
+      - image: {{ .Values.dbcache.name }}:alpine
+        name: {{ .Values.dbcache.name }}
+        ports:
+        - containerPort: {{ .Values.dbcache.containerPort }}
+          name: {{ .Values.dbcache.name }}
+        volumeMounts:
+        - mountPath: /data
+          name: {{ .Values.dbcache.name }}-data
+      volumes:
+      - name: redis-data
+        emptyDir: {} 

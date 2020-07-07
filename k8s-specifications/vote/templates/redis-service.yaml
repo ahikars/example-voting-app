@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ .Values.dbcache.name }}
+  name: {{ .Values.dbcache.name }}
+  namespace: {{ template "name" . }}
+spec:
+  type: {{ .Values.dbcache.type }}
+  ports:
+  - name: {{ .Values.dbcache.name }}-service
+    port: {{ .Values.dbcache.containerPort }}
+    targetPort: {{ .Values.dbcache.containerPort }}
+  selector:
+    app: {{ .Values.dbcache.name }}
+  

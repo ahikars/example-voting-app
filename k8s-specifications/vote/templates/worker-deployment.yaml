@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.worker.name }}
+  name: {{ .Values.worker.name }}
+  namespace: {{ template "name" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.worker.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.worker.name }}
+    spec:
+      containers:
+      - image: {{ .Values.worker.image }}
+        name: {{ .Values.worker.name }}
