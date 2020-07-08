@@ -10,6 +10,11 @@ pipeline {
     }
   }
   stages {
+    stage('login docker.io') {
+      steps {
+        sh 'docker login docker.io'
+      }
+    }
     stage('Build result') {
       steps {
         sh 'docker build -t ahikars/result ./result'
