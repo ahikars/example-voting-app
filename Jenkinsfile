@@ -2,7 +2,7 @@
 pipeline {
   agent {
     node {
-      label 'ubuntu_containerd'
+      label 'goog-gke-node'
     }
   }
   stages {
