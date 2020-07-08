@@ -33,7 +33,7 @@ pipeline {
     stage('Push result image') {
       
       steps {
-        
+      docker.withRegistry('https://docker.io/')  
           sh 'docker push ahikars/result'
         
       }
