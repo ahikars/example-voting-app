@@ -27,7 +27,7 @@ pipeline {
     }
     stage('Push result image') {
       steps {
-        sh 'docker push ahikars/result'
+        sh 'docker push ahikars/result:latest'
         
       }
     }
@@ -42,7 +42,7 @@ pipeline {
      
       steps {
         
-          sh 'docker push ahikars/worker'
+          sh 'docker push ahikars/worker:latest'
         
       }
     }
