@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Build result') {
       steps {
-        sh 'docker login --username=ahikars --email=ahikars@gmail.com docker.io'
+//        sh 'docker login --username=ahikars --email=ahikars@gmail.com docker.io'
         sh 'docker build -t ahikars/result ./result'
       }
     } 
