@@ -34,7 +34,7 @@ pipeline {
     stage('Push vote image') {
             steps {
     
-          sh 'docker push ahikars/vote'
+          sh 'docker push ahikars/vote:latest'
         
       }
     }
