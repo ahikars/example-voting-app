@@ -1,5 +1,9 @@
 
 pipeline {
+  environment {
+    registry = "ahikars"
+    registryCredential = 'dockerhub'
+  }
   agent {
     node {
       label 'ubuntu'
