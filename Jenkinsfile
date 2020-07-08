@@ -10,11 +10,6 @@ pipeline {
     }
   }
   stages {
-    stage('login docker.io') {
-      steps {
-        sh 'docker login docker.io'
-      }
-    }
     stage('Build result') {
       steps {
         sh 'docker build -t ahikars/result ./result'
@@ -31,10 +26,8 @@ pipeline {
       }
     }
     stage('Push result image') {
-      
       steps {
-      docker.withRegistry('https://docker.io/')  
-          sh 'docker push ahikars/result'
+        sh 'docker push ahikars/result'
         
       }
     }
