@@ -109,7 +109,7 @@ app:
       ports:
         containerPort: 80
     service:
-      type: ClusterIP
+      type: LoadBalancer
       ports:
         port: 5000
         targetPort: 80
@@ -122,7 +122,7 @@ app:
       ports:
         containerPort: 80
     service: 
-      type: ClusterIP
+      type: LoadBalancer
       ports:
         port: 5001
         targetPort: 80
